@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: self2-healing-deployment
+  labels:
+    app: self-healing
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: self-healing
+  template:
+    metadata:
+      labels:
+        app: self-healing
+    spec:
+      containers:
+      - name: self-app
+        image: raju24devops/self-healing:v1
+        ports: 
+        - containerPort: 3000
